@@ -5,25 +5,28 @@ public class TP{
 	public static void main(String[] args){
 		boolean[] primes = sieve(1000000);
 		
-		int curr;
-		int reverse; 
+		//We need to keep track of both left and right removals. 
+		int rightTruncate;
+		int leftTruncate; 
 		int scalar;
 		boolean truncatable = true;
 		long sum = 0; 
 		//Starting with the first double digit prime
+		//We will truncate from the right, and build the left truncate 
+		//Case from right to left as we go. 
 		for( int i = 11; i < primes.length; i++){
 			if( primes[i] ){
-				curr = i;
-				reverse = 0;
+				rightTruncate = i;
+				leftTruncate = 0;
 				scalar = 1; 
 				truncatable  = true;  
-				while( curr >= 10 ){
-					reverse += scalar * (curr % 10);
+				while( rightTruncate >= 10 ){
+					leftTruncate += scalar * (rightTruncate % 10);
 					scalar *= 10;
-					curr = curr / 10;
+					rightTruncate = rightTruncate / 10;
 
-					if( ! (primes[reverse] && primes[curr]) ){
-						truncatable = false;
+					if( ! (primes[ leftTruncate ] && primes[ rightTruncate ]) ){
+					truncatable = false;
 					}
 				}
 				if(truncatable){
