@@ -1,0 +1,47 @@
+public class NSD{
+
+	
+	public static void main(String[] args){
+
+	}
+
+
+	//Given n (the size of the square matrix
+	//Fill it with a number spiral.
+	public int[][] spiralize( int n ){
+		
+		//This is the biggest number in the spiral.
+		int curr = n*n; 
+		int x = n - 1;
+		int y = n - 1;
+		int[][] spiral = new int[n][n];
+
+		//Control the direction we are moving
+		for( ; curr > 0; ){
+			
+			//Travers in one direction until out of bounds
+			for( ; ; ){
+				//insert curr into the spiral
+				spiral[x][y] = curr;
+				--curr; 
+				
+				//Apply offset to move to the next point. 	
+			}
+			//Adjust offset.
+		}
+	}
+
+
+	enum Direction {
+		int xOff;
+		int yOff;
+
+		public Direction(int xAdj, int yAdj){
+			this.xOff = xAdj;
+			this.yOff = yAdj; 
+		}
+
+		LEFT(-1, 0), DOWN(0, 1), RIGHT(1, 0), UP(0, -1);
+ 
+	}
+}
